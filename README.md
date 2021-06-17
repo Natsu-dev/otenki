@@ -1,0 +1,2 @@
+# otenki
+discord weather bot
