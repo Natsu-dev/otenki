@@ -16,15 +16,23 @@ class periodic(commands.Cog):
 
     @tasks.loop(seconds=60)
     async def minloop(self):
-        if datetime.datetime.now().strftime('%H-%M') == '22-01':
+        if datetime.datetime.now().strftime('%H-%M') == '22-00':
 
             forecast = customFunc.tomorrowForecast()
 
             for guild in self.bot.guilds:
+                send = False
                 for channel in guild.text_channels:
-                    if channel.permissions_for(guild.me).send_messages:
+                    if '天気予報' in channel.name and channel.permissions_for(guild.me).send_messages:
                         await channel.send(embed=forecast)
+                        send = True
                         break
+
+                if send == False:
+                    for channel in guild.text_channels:
+                        if channel.permissions_for(guild.me).send_messages:
+                            await channel.send(embed=forecast)
+                            break
 
 
 def setup(bot):
