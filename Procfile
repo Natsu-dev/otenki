@@ -1,0 +1,1 @@
+otenki: python otenki.py
