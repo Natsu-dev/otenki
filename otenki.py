@@ -3,15 +3,20 @@
 # Packages
 import discord
 from discord.ext import commands
-from discord.utils import find
 import traceback  # show errors
 
 # Custom Libraries
 import loadenv
+import phrases
+
+
+VERSION = '0.0.0'
 
 
 INITIAL_EXTENSIONS = [
-    'cogs.event'
+    'cogs.event',
+    'cogs.command',
+    'cogs.periodic'
 ]
 
 
@@ -30,12 +35,17 @@ class MyBot(commands.Bot):
     async def on_ready(self):
         print('USER: ' + self.user.name)
         print('ID: ' + str(self.user.id))
+
+        print('Servers:')
+        for guild in bot.guilds:
+            print(guild.name)
+
         print('ready...')
 
 
 # Run
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='>',
-                # '<OS name> <version>をプレイ中'
-                activity=discord.Game('気象庁(非公式)'))
+    bot = MyBot(command_prefix='t:',
+        # 't:infoをプレイ中'
+        activity=discord.Game(phrases.activity))
     bot.run(loadenv.TOKEN)

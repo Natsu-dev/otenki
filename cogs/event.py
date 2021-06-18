@@ -1,5 +1,7 @@
 from asyncio import events
-from discord.ext import tasks, commands
+from discord.ext import commands
+
+import phrases
 
 class event(commands.Cog):
     def __init__(self, bot):
@@ -21,7 +23,7 @@ class event(commands.Cog):
     async def on_guild_join(self, guild):
         for channel in guild.text_channels:
             if channel.permissions_for(guild.me).send_messages:
-                await channel.send('Joined {}!'.format(guild.name))
+                await channel.send(embed=phrases.info)
                 break
 
 
