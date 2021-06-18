@@ -1,11 +1,7 @@
 # coding: UTF-8
 
-import discord
-import otenki
-import datetime
-
 activity = 't:info'
 
-info = discord.Embed(
-    title='おてんき Version {}\n'.format(otenki.VERSION),
-    description='毎日22時に気象庁発表の翌日の天気の情報を書き込むbotです。\nより詳細な天気の情報は気象庁ホームページ( https://www.jma.go.jp/ )等を確認してください。また、このbotは気象庁非公式かつ非公認であることにご留意ください。\n詳しい仕様はGitHubリポジトリ( https://github.com/Natsu-dev/otenki )に掲載していますので、必ずご一読ください。')
+aboutText = '毎日22時に気象庁発表の翌日の天気の情報を書き込むbotです。\n詳しい仕様はGitHubリポジトリ( https://github.com/Natsu-dev/otenki )に掲載していますので、必ずご一読ください。'
+
+commandList = '`t:info` botの説明が表示されます。\n`t:forecast` 全国版の明日の天気が表示されます。'

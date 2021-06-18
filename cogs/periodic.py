@@ -5,7 +5,6 @@ import discord
 from discord.ext import tasks, commands
 import datetime
 import customFunc
-import json
 
 class periodic(commands.Cog):
 
@@ -18,7 +17,7 @@ class periodic(commands.Cog):
     async def minloop(self):
         if datetime.datetime.now().strftime('%H-%M') == '22-00':
 
-            forecast = customFunc.tomorrowForecast()
+            forecast = customFunc.forecast(1)
 
             for guild in self.bot.guilds:
                 send = False

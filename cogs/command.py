@@ -1,6 +1,8 @@
+from asyncio.windows_events import NULL
 from discord.ext import commands
 import phrases
 import customFunc
+import sys
 
 class command(commands.Cog):
     def __init__(self, bot):
@@ -12,8 +14,17 @@ class command(commands.Cog):
         await ctx.send(embed=phrases.info)
 
     @commands.command()
-    async def forecast(self, ctx):
-        forecast = customFunc.tomorrowForecast()
+    async def forecast(self, ctx, arg = ''):
+        if arg.isdecimal():
+            argInt = int(arg)
+        else:
+            argInt = -1
+        
+        if argInt >= 0 and argInt <= 6:
+            forecast = customFunc.forecast(argInt)
+        else:
+            forecast = customFunc.forecast()
+
         await ctx.send(embed=forecast)
 
 

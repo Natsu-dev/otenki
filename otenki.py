@@ -9,9 +9,7 @@ import traceback  # show errors
 import loadenv
 import phrases
 
-
-VERSION = '0.0.0'
-
+VERSION = '0.0.1'
 
 INITIAL_EXTENSIONS = [
     'cogs.event',
