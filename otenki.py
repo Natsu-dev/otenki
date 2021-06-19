@@ -4,9 +4,11 @@
 import discord
 from discord.ext import commands
 import traceback  # show errors
+import os
+
+from dotenv.main import load_dotenv
 
 # Custom Libraries
-import loadenv
 import phrases
 
 VERSION = '0.0.1'
@@ -43,7 +45,8 @@ class MyBot(commands.Bot):
 
 # Run
 if __name__ == '__main__':
+    load_dotenv()
     bot = MyBot(command_prefix='t:',
         # 't:infoをプレイ中'
         activity=discord.Game(phrases.activity))
-    bot.run(loadenv.TOKEN)
+    bot.run(os.getenv('DISCORD_TOKEN'))

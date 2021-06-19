@@ -5,6 +5,6 @@ from dotenv import load_dotenv
 load_dotenv(verbose=True)
 
 dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+load_dotenv(verbose=True, dotenv_path=dotenv_path)
 
 TOKEN = os.getenv('DISCORD_TOKEN')

@@ -11,7 +11,8 @@ class command(commands.Cog):
 
     @commands.command()
     async def info(self, ctx):
-        await ctx.send(embed=phrases.info)
+        info = customFunc.botInfo()
+        await ctx.send(embed=info)
 
     @commands.command()
     async def forecast(self, ctx, arg = ''):
